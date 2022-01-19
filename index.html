@@ -1,0 +1,38 @@
+<!-- @code.priyank -->
+<!-- Visit my website for more tutorials => www.thecodepedia.com  -->
+<!-- Making a HTML Minifier using Html, Css and JavaScript -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Minify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="codeminify">
+        <textarea class="simplecode"></textarea>
+        <button id="htmlMinify"> Minify your code</button>
+        <textarea class="minifycode"></textarea>
+    </section>
+    <script>
+        var $tag = function (tag) {
+            return document.getElementsByTagName(tag)
+        }
+        function minify_html(type, input, output) {
+            output.value = input.value
+                .replace(/\<\!--\s*?[^\s?[][\s\S]*?--\>/g, '')
+                .replace(/\>\s*\</g, '><');
+        }
+        document.getElementById("htmlMinify").addEventListener("click", function () {
+            minify_html(
+                this.innerHTML, $tag('textarea')[0], $tag('textarea')[1]
+            );
+        }, false)
+    </script>
+</body>
+
+</html>
